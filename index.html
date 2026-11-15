@@ -1,0 +1,1010 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09051e">
+<title>Our Little Forever 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root{
+ --pink:#ff8bc9;
+ --purple:#a78bfa;
+ --blue:#65dcff;
+ --gold:#ffe3a3;
+ --bg:#09051e;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+ background:var(--bg);
+ color:white;
+ font-family:Outfit,sans-serif;
+ overflow-x:hidden;
+}
+
+button{font:inherit;cursor:pointer}
+
+#universe{
+ position:fixed;
+ inset:0;
+ z-index:-10;
+ background:
+ radial-gradient(ellipse at 15% 25%,#652c82 0%,transparent 42%),
+ radial-gradient(ellipse at 90% 70%,#183b76 0%,transparent 45%),
+ linear-gradient(150deg,#08051b,#171033,#09051e);
+}
+
+.aurora{
+ position:fixed;
+ inset:-30%;
+ z-index:-8;
+ background:linear-gradient(120deg,
+ transparent,#9e4fff25,#4de5ff24,#ff63b524,transparent);
+ filter:blur(70px);
+ animation:aurora 17s ease-in-out infinite alternate;
+}
+
+@keyframes aurora{
+ to{transform:translate(10%,8%) rotate(20deg) scale(1.3)}
+}
+
+#stars{
+ position:fixed;
+ inset:0;
+ z-index:-7;
+ pointer-events:none;
+}
+
+.star{
+ position:absolute;
+ background:white;
+ width:2px;
+ height:2px;
+ border-radius:50%;
+ box-shadow:0 0 8px #fff;
+ animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+ to{opacity:.15;transform:scale(1.8)}
+}
+
+section{
+ padding:75px 20px;
+ text-align:center;
+}
+
+.container{
+ max-width:600px;
+ margin:auto;
+}
+
+.small{
+ font-size:10px;
+ letter-spacing:5px;
+ color:var(--blue);
+ margin-bottom:20px;
+}
+
+h1,h2,h3{
+ font-family:'Cormorant Garamond',serif;
+ font-weight:400;
+}
+
+h1{
+ font-size:clamp(55px,13vw,90px);
+ line-height:1;
+ background:linear-gradient(120deg,#fff,#ff9ed5,#b7a2ff,#6ce9ff);
+ background-size:250%;
+ color:transparent;
+ background-clip:text;
+ animation:colorFlow 7s infinite;
+}
+
+@keyframes colorFlow{
+ to{background-position:250%}
+}
+
+h2{
+ font-size:clamp(36px,9vw,53px);
+ color:#ffe1f1;
+ margin-bottom:22px;
+}
+
+p{
+ font-size:13px;
+ line-height:2;
+ color:#d1c7e9;
+}
+
+.btn{
+ border:1px solid #ffffff65;
+ border-radius:40px;
+ padding:15px 27px;
+ color:white;
+ background:linear-gradient(110deg,#8749b9,#3d65b8,#b64e94);
+ box-shadow:0 0 30px #a15cdb44;
+ letter-spacing:1px;
+ font-size:12px;
+ transition:.3s;
+}
+
+.btn:active{transform:scale(.93)}
+
+.hero{
+ min-height:100svh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ padding:35px 20px;
+}
+
+.hero p{
+ max-width:330px;
+ margin:25px auto;
+}
+
+.planet{
+ font-size:90px;
+ margin:30px 0;
+ filter:drop-shadow(0 0 30px #b88cff);
+ animation:planet 6s ease-in-out infinite;
+}
+
+@keyframes planet{
+ 50%{transform:translateY(-17px) rotate(15deg)}
+}
+
+/* STORY */
+
+.story-card{
+ padding:25px;
+ margin:17px 0;
+ border-radius:22px;
+ background:linear-gradient(140deg,#ffffff19,#ffffff05);
+ border:1px solid #ffffff25;
+ backdrop-filter:blur(15px);
+ text-align:left;
+}
+
+.story-card .emoji{
+ font-size:30px;
+ margin-bottom:12px;
+}
+
+.story-card h3{
+ color:#ffaddb;
+ font-size:25px;
+ margin-bottom:9px;
+}
+
+/* GHOST ANIMATION */
+
+#ghostWorld{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:100;
+ background:
+ radial-gradient(ellipse at 50% 60%,#44296b,#100a2c 65%,#050414);
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ text-align:center;
+ padding:25px;
+ overflow:hidden;
+}
+
+#ghostWorld.active{display:flex}
+
+.ghost{
+ font-size:85px;
+ filter:drop-shadow(0 0 25px #d9b9ff);
+ animation:ghostFloat 3s ease-in-out infinite;
+}
+
+@keyframes ghostFloat{
+ 50%{transform:translateY(-35px) rotate(7deg)}
+}
+
+.ghostText{
+ max-width:360px;
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(27px,7vw,39px);
+ color:#ffe0f2;
+ line-height:1.5;
+ margin:30px auto;
+ opacity:0;
+ transform:translateY(20px);
+ transition:opacity 1s,transform 1s;
+}
+
+.ghostText.show{
+ opacity:1;
+ transform:translateY(0);
+}
+
+.timer{
+ position:absolute;
+ bottom:35px;
+ color:#c9b4f1;
+ font-size:11px;
+ letter-spacing:3px;
+}
+
+.skip{
+ position:absolute;
+ top:25px;
+ right:20px;
+ border:1px solid #ffffff40;
+ background:#ffffff15;
+ color:white;
+ border-radius:30px;
+ padding:10px 17px;
+ font-size:11px;
+}
+
+/* STAR GAME */
+
+.game{
+ margin-top:30px;
+ padding:25px 15px;
+ border-radius:25px;
+ border:1px solid #ffffff30;
+ background:#ffffff0b;
+}
+
+.starGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:13px;
+ max-width:300px;
+ margin:25px auto;
+}
+
+.gameStar{
+ border:1px solid #b9a4ff55;
+ background:#ffffff0d;
+ border-radius:17px;
+ height:75px;
+ font-size:28px;
+ transition:.3s;
+}
+
+.gameStar:active{transform:scale(.8)}
+
+.gameStar.found{
+ background:#c77bff33;
+ border-color:#ffb1e4;
+ box-shadow:0 0 20px #e6a0ff66;
+}
+
+#gameMessage{
+ color:#ffcae7;
+ min-height:30px;
+ font-size:14px;
+}
+
+/* PROPOSAL */
+
+.proposalBox{
+ margin:35px auto;
+ padding:35px 20px;
+ border-radius:28px;
+ border:1px solid #ff9dd955;
+ background:linear-gradient(145deg,#652a6944,#273e7944,#7c3d6a44);
+ box-shadow:0 0 55px #9d5fd822;
+}
+
+.proposalBox .ring{
+ font-size:65px;
+ animation:ringFloat 3s infinite;
+}
+
+@keyframes ringFloat{
+ 50%{transform:translateY(-10px) rotate(8deg)}
+}
+
+.answerArea{
+ position:relative;
+ min-height:120px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:20px;
+ flex-wrap:wrap;
+ overflow:visible;
+ margin-top:25px;
+}
+
+.answer{
+ border-radius:40px;
+ padding:14px 35px;
+ border:1px solid white;
+ color:white;
+ font-size:13px;
+}
+
+.yes{
+ background:linear-gradient(100deg,#e64caa,#9156d7);
+ box-shadow:0 0 25px #fa77cf77;
+}
+
+.no{
+ background:#ffffff14;
+ border-color:#ffffff55;
+ transition:transform .15s;
+}
+
+#yesEnding{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:200;
+ background:radial-gradient(circle,#5a266b,#100b2d 70%,#050414);
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ text-align:center;
+ padding:25px;
+}
+
+#yesEnding.active{display:flex}
+
+.yesText{
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(35px,9vw,60px);
+ color:#ffe1f2;
+ max-width:400px;
+ opacity:0;
+ transform:scale(.8);
+ transition:1.3s;
+}
+
+.yesText.show{
+ opacity:1;
+ transform:scale(1);
+}
+
+#countdown{
+ position:absolute;
+ top:35px;
+ color:#d8c0ff;
+ font-size:12px;
+ letter-spacing:4px;
+}
+
+#toast{
+ position:fixed;
+ bottom:25px;
+ left:50%;
+ transform:translate(-50%,30px);
+ padding:14px 20px;
+ border-radius:30px;
+ background:#38204f;
+ border:1px solid #ffaddd;
+ color:white;
+ font-size:12px;
+ opacity:0;
+ transition:.5s;
+ z-index:300;
+ text-align:center;
+ width:max-content;
+ max-width:90%;
+}
+
+#toast.show{
+ opacity:1;
+ transform:translate(-50%,0);
+}
+
+.particle{
+ position:fixed;
+ top:-30px;
+ z-index:250;
+ pointer-events:none;
+ animation:fall linear forwards;
+}
+
+@keyframes fall{
+ to{transform:translate(var(--move),110vh) rotate(700deg);opacity:0}
+}
+
+footer{
+ padding:35px 15px;
+ text-align:center;
+ color:#bca6d9;
+ font-size:10px;
+ letter-spacing:3px;
+}
+
+@media(max-width:380px){
+ .story-card{padding:19px}
+ .gameStar{height:65px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="universe"></div>
+<div class="aurora"></div>
+<div id="stars"></div>
+
+<!-- OPENING -->
+
+<section class="hero">
+ <div class="small">✦ A STORY WRITTEN IN THE STARS ✦</div>
+
+ <h1>Our Little<br>Forever</h1>
+
+ <div class="planet">🌌</div>
+
+ <p>
+ Two hearts, one beautiful dream,
+ and a little universe we imagine
+ building together.
+ </p>
+
+ <button class="btn" onclick="startStory()">
+ START OUR STORY ♡
+ </button>
+</section>
+
+<!-- GHOST STORY FULL SCREEN -->
+
+<div id="ghostWorld">
+ <button class="skip" onclick="finishStory()">SKIP ✦</button>
+
+ <div class="ghost">👻</div>
+
+ <div class="ghostText" id="ghostText"></div>
+
+ <div class="timer" id="timer">OUR STORY · 35</div>
+</div>
+
+<!-- STORY -->
+
+<section>
+ <div class="container">
+
+  <div class="small">✧ CHAPTER ONE ✧</div>
+  <h2>How I Fell For You</h2>
+
+  <div class="story-card">
+   <div class="emoji">🌷</div>
+   <h3>It Started With You</h3>
+   <p>
+    I never planned to fall for someone this deeply.
+    But slowly, without even realizing it,
+    you became someone I genuinely cared about.
+    Your words, your little reactions,
+    your smile and your presence started
+    meaning more to me than I could explain.
+   </p>
+  </div>
+
+  <div class="story-card">
+   <div class="emoji">💗</div>
+   <h3>Why You're Special</h3>
+   <p>
+    I love the way you make ordinary conversations
+    feel special. I love your little habits,
+    your cute moments, your personality,
+    and the way being around you can make
+    a difficult day feel lighter.
+    I don't need you to be perfect.
+    I appreciate you being yourself.
+   </p>
+  </div>
+
+  <div class="story-card">
+   <div class="emoji">🌙</div>
+   <h3>How Much I Care</h3>
+   <p>
+    I want to understand you, listen to you,
+    support your dreams and respect your feelings.
+    I don't want love to be just beautiful words.
+    I want it to be patience, honesty,
+    loyalty and effort every single day.
+   </p>
+  </div>
+
+ </div>
+</section>
+
+<!-- OUR DREAM -->
+
+<section>
+ <div class="container">
+
+  <div class="small">✧ CHAPTER TWO ✧</div>
+  <h2>Our Little Future</h2>
+
+  <p>
+   These are dreams, not promises about what
+   the future must look like. But they are
+   beautiful dreams I hope we can build together.
+  </p>
+
+  <div class="story-card">
+   <div class="emoji">💍</div>
+   <h3>One Beautiful Day</h3>
+   <p>
+    One day, if life and Allah allow,
+    I hope we can stand beside each other
+    and begin a new chapter together.
+    Not just as two people in love,
+    but as two people choosing to care
+    for each other every day.
+   </p>
+  </div>
+
+  <div class="story-card">
+   <div class="emoji">🏡</div>
+   <h3>Our Little Home</h3>
+   <p>
+    A peaceful home, silly conversations,
+    little celebrations, shared meals,
+    supporting each other's dreams,
+    and finding happiness in simple things.
+   </p>
+  </div>
+
+  <div class="story-card">
+   <div class="emoji">🧸</div>
+   <h3>A Little Dream Named Tiyasha</h3>
+   <p>
+    And in our imagination, there's little Tiyasha.
+    A tiny bundle of happiness in our future story.
+    I imagine us teaching her kindness,
+    helping her discover the world,
+    and making her feel loved and safe.
+    A beautiful family dream, if that future
+    is something we both choose.
+   </p>
+  </div>
+
+ </div>
+</section>
+
+<!-- STAR GAME -->
+
+<section>
+ <div class="container">
+
+  <div class="small">✧ A LITTLE GAME ✧</div>
+  <h2>Catch My Stars ⭐</h2>
+
+  <p>
+   Find all 6 stars hidden in this little universe.
+   Each star carries a little message for you.
+  </p>
+
+  <div class="game">
+   <div id="score">Stars collected: 0 / 6</div>
+
+   <div class="starGrid" id="starGrid"></div>
+
+   <div id="gameMessage">
+    Find your first star! 💫
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- SECRET MESSAGE -->
+
+<section>
+ <div class="container">
+
+  <div class="small">✧ A SECRET MESSAGE ✧</div>
+  <h2>For Tiyasha's Ammu</h2>
+
+  <div class="proposalBox">
+   <div style="font-size:55px">💌</div>
+
+   <p style="font-family:'Cormorant Garamond';font-size:26px;color:#ffcae8;margin-top:15px">
+    I love you, Tiyasha's Ammu.
+   </p>
+
+   <p style="margin-top:15px">
+    I may not always find the perfect words,
+    but I hope my actions always show you
+    how much I appreciate you.
+   </p>
+  </div>
+
+ </div>
+</section>
+
+<!-- FINAL PROPOSAL -->
+
+<section>
+ <div class="container">
+
+  <div class="small">✧ THE MOST SPECIAL QUESTION ✧</div>
+
+  <div class="proposalBox">
+
+   <div class="ring">💍</div>
+
+   <h2 style="margin-top:20px">
+    My Jim, My Love...
+   </h2>
+
+   <p>
+    If one day our dreams become our reality,
+    and we get to build our own little world...
+    <br><br>
+    Will you let me be beside you
+    through the beautiful days and the difficult ones?
+    <br><br>
+    And will you be the loving mother
+    of our imaginary little Tiyasha,
+    if we are both blessed with that future?
+   </p>
+
+   <h2 style="font-size:34px;margin-top:28px">
+    Will You Be My Tiyasha's Ammu? 🥺
+   </h2>
+
+   <div class="answerArea" id="answerArea">
+
+    <button class="answer yes" onclick="sayYes()">
+     YES! 💗
+    </button>
+
+    <button class="answer no" id="noBtn" onclick="runNo()">
+     NO 🙈
+    </button>
+
+   </div>
+
+   <p id="noMessage" style="margin-top:15px;color:#ffb3d9">
+    Choose carefully! 😂
+   </p>
+
+  </div>
+
+ </div>
+</section>
+
+<!-- YES ENDING -->
+
+<div id="yesEnding">
+
+ <div id="countdown">OUR LITTLE FOREVER · 10</div>
+
+ <div class="ghost" id="endingEmoji">🌌</div>
+
+ <div class="yesText" id="endingText">
+  Okaayyyyy! 💗
+ </div>
+
+</div>
+
+<div id="toast"></div>
+
+<footer>
+ MADE WITH LOVE · FOR MY FAVOURITE PERSON ♡
+</footer>
+
+<script>
+
+/* STARS */
+
+const starContainer=document.getElementById('stars');
+
+for(let i=0;i<100;i++){
+ const s=document.createElement('div');
+ s.className='star';
+ s.style.left=Math.random()*100+'%';
+ s.style.top=Math.random()*100+'%';
+ s.style.animationDelay=Math.random()*4+'s';
+ starContainer.appendChild(s);
+}
+
+/* SOUND */
+
+let audioContext;
+
+function sound(frequency=520,duration=.18){
+ try{
+  if(!audioContext){
+   audioContext=new (window.AudioContext||window.webkitAudioContext)();
+  }
+
+  if(audioContext.state==='suspended')audioContext.resume();
+
+  const oscillator=audioContext.createOscillator();
+  const gain=audioContext.createGain();
+
+  oscillator.type='sine';
+  oscillator.frequency.value=frequency;
+
+  gain.gain.setValueAtTime(.0001,audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.08,audioContext.currentTime+.02);
+  gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+duration);
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime+duration);
+
+ }catch(e){}
+}
+
+/* PARTICLES */
+
+function rain(amount=50){
+ const icons=['💗','🌸','✨','⭐','🦋','💜','🌷'];
+
+ for(let i=0;i<amount;i++){
+  setTimeout(()=>{
+   const p=document.createElement('div');
+   p.className='particle';
+   p.textContent=icons[Math.floor(Math.random()*icons.length)];
+   p.style.left=Math.random()*100+'vw';
+   p.style.fontSize=(15+Math.random()*20)+'px';
+   p.style.animationDuration=(4+Math.random()*5)+'s';
+   p.style.setProperty('--move',(Math.random()-.5)*160+'px');
+   document.body.appendChild(p);
+   setTimeout(()=>p.remove(),10000);
+  },i*35);
+ }
+}
+
+/* 35 SECOND GHOST STORY */
+
+const scenes=[
+ "Somewhere in this huge universe... there was a boy who never expected to find someone this special. 🌌",
+ "Then one day, a girl came into his life. Her name was Jim. And slowly, she became his favourite person. 💗",
+ "He started loving the little things. Her messages, her voice, her smile, even the smallest moments they shared. 🌷",
+ "He didn't just want to say I LOVE YOU. He wanted to learn how to listen, understand, respect and care. 🦋",
+ "Sometimes he imagined a future. A peaceful home, two people supporting each other and choosing each other every day. 🏡",
+ "And somewhere in that little dream, there was a baby named Tiyasha. A little star in their imaginary family. 🧸",
+ "And the boy's biggest wish? That one day, if life allows and both hearts choose it, their little dream could become real. 💍"
+];
+
+let sceneTimer;
+let storyStarted=false;
+
+function startStory(){
+ sound(600);
+ storyStarted=true;
+
+ const world=document.getElementById('ghostWorld');
+ const text=document.getElementById('ghostText');
+ const timer=document.getElementById('timer');
+
+ world.classList.add('active');
+
+ let index=0;
+ let remaining=35;
+
+ function showScene(){
+  text.classList.remove('show');
+
+  setTimeout(()=>{
+   text.textContent=scenes[index];
+   text.classList.add('show');
+   sound(440+index*55);
+   rain(5);
+  },450);
+
+  index++;
+ }
+
+ showScene();
+
+ sceneTimer=setInterval(()=>{
+  remaining--;
+  timer.textContent='OUR STORY · '+remaining;
+
+  if(remaining%5===0 && index<scenes.length){
+   showScene();
+  }
+
+  if(remaining<=0){
+   finishStory();
+  }
+ },1000);
+}
+
+function finishStory(){
+ clearInterval(sceneTimer);
+ document.getElementById('ghostWorld').classList.remove('active');
+ rain(40);
+ sound(700);
+ document.getElementById('ghostWorld').style.display='none';
+}
+
+/* STAR GAME */
+
+const messages=[
+ "You are my sunshine. ☀️",
+ "You make my world brighter. 💗",
+ "I appreciate your heart. 🌷",
+ "I want to understand you. 🦋",
+ "I wish you endless happiness. ✨",
+ "I LOVE YOU, TIYASHA'S AMMU! 💍"
+];
+
+let found=0;
+let selected=[];
+
+const grid=document.getElementById('starGrid');
+
+for(let i=0;i<9;i++){
+ const b=document.createElement('button');
+ b.className='gameStar';
+ b.textContent='✦';
+
+ b.onclick=()=>{
+  if(b.classList.contains('found'))return;
+
+  if(found>=6)return;
+
+  b.classList.add('found');
+  b.textContent='⭐';
+
+  sound(500+found*80);
+
+  document.getElementById('gameMessage').textContent=messages[found];
+
+  found++;
+
+  document.getElementById('score').textContent=
+   'Stars collected: '+found+' / 6';
+
+  if(found===6){
+   rain(60);
+   document.getElementById('gameMessage').textContent=
+    'YOU UNLOCKED: I LOVE YOU, TIYASHA’S AMMU! 💗';
+   sound(900,.5);
+  }
+ };
+
+ grid.appendChild(b);
+}
+
+/* FUNNY NO BUTTON */
+
+let noCount=0;
+
+function runNo(){
+
+ const btn=document.getElementById('noBtn');
+ const area=document.getElementById('answerArea');
+ const msg=document.getElementById('noMessage');
+
+ noCount++;
+
+ sound(250);
+
+ const replies=[
+  "Eiii! 😂 You almost got it!",
+  "The NO button is shy! 🙈",
+  "Are you sure? Try catching it! 🤭",
+  "This button has its own plans! 😂",
+  "Okaay, this button is impossible! 💗"
+ ];
+
+ msg.textContent=replies[Math.min(noCount-1,replies.length-1)];
+
+ const maxX=Math.max(0,area.clientWidth/2-65);
+ const x=(Math.random()-.5)*maxX*2;
+ const y=(Math.random()-.5)*45;
+
+ btn.style.transform=`translate(${x}px,${y}px)`;
+}
+
+/* YES: 10 SECOND CINEMATIC */
+
+function sayYes(){
+
+ sound(850,.4);
+
+ const ending=document.getElementById('yesEnding');
+ const text=document.getElementById('endingText');
+ const emoji=document.getElementById('endingEmoji');
+ const counter=document.getElementById('countdown');
+
+ ending.classList.add('active');
+
+ const endingScenes=[
+  ["Okaayyyyy! 💗","💗"],
+  ["A thousand flowers for you! 🌸","🌷"],
+  ["Our little universe is glowing! ✨","🌌"],
+  ["Tiyasha's Ammu! 🧸","🧸"],
+  ["This is a beautiful little dream! 💍","💖"]
+ ];
+
+ let second=0;
+
+ function update(){
+
+  const index=Math.min(4,Math.floor(second/2));
+
+  text.classList.remove('show');
+
+  setTimeout(()=>{
+   text.textContent=endingScenes[index][0];
+   emoji.textContent=endingScenes[index][1];
+   text.classList.add('show');
+   sound(500+index*100);
+   rain(15);
+  },250);
+
+  counter.textContent='OUR LITTLE FOREVER · '+(10-second);
+ }
+
+ update();
+
+ const timer=setInterval(()=>{
+  second++;
+  if(second>=10){
+   clearInterval(timer);
+   counter.textContent='A NEW LITTLE MEMORY ♡';
+   text.classList.remove('show');
+
+   setTimeout(()=>{
+    text.textContent="I LOVE YOU SOOOO MUCH, JIM! 💗";
+    text.classList.add('show');
+    emoji.textContent='💍';
+    rain(120);
+    sound(950,.6);
+   },500);
+   return;
+  }
+
+  update();
+ },1000);
+
+ // Confirmation visible on this device
+ showToast("YES! 💗 Your beautiful answer has been celebrated!");
+}
+
+/* LOCAL CONFIRMATION */
+
+function showToast(message){
+ const toast=document.getElementById('toast');
+ toast.textContent=message;
+ toast.classList.add('show');
+
+ setTimeout(()=>toast.classList.remove('show'),5000);
+}
+
+/* SLOW CONTINUOUS MAGIC */
+
+setInterval(()=>{
+ if(Math.random()>.5){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.textContent='✨';
+  p.style.left=Math.random()*100+'vw';
+  p.style.animationDuration='8s';
+  p.style.setProperty('--move','35px');
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),9000);
+ }
+},1800);
+
+window.addEventListener('load',()=>{
+ setTimeout(()=>rain(15),1000);
+});
+
+</script>
+</body>
+</html>
